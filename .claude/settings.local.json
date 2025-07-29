@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:www.udemy.com)",
-      "WebFetch(domain:ikechanjp.github.io)"
+      "WebFetch(domain:ikechanjp.github.io)",
+      "Bash(start udemy-timer.html)",
+      "Bash(cmd /c start:*)"
     ],
     "deny": []
   }
