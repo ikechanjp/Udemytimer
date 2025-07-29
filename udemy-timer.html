@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udemyコース - 期間限定販売</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #FFFFFF;
+            color: #333333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .timer-section {
+            background-color: #f8f8f8;
+            border: 2px solid #E60023;
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        
+        .countdown {
+            font-size: 32px;
+            font-weight: bold;
+            color: #E60023;
+            margin-bottom: 10px;
+        }
+        
+        .timer-units {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+        
+        .time-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #E60023;
+            display: block;
+        }
+        
+        .time-label {
+            font-size: 14px;
+            color: #666666;
+            margin-top: 5px;
+        }
+        
+        .end-message {
+            font-size: 28px;
+            font-weight: bold;
+            color: #E60023;
+            display: none;
+        }
+        
+        .course-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .course-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+        
+        .course-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            background-color: #E60023;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #cc001e;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .timer-section {
+                padding: 20px 15px;
+            }
+            
+            .timer-title {
+                font-size: 20px;
+            }
+            
+            .countdown {
+                font-size: 24px;
+            }
+            
+            .time-number {
+                font-size: 28px;
+            }
+            
+            .time-units {
+                gap: 15px;
+            }
+            
+            .time-unit {
+                min-width: 50px;
+            }
+            
+            .course-title {
+                font-size: 24px;
+            }
+            
+            .course-description {
+                font-size: 16px;
+            }
+            
+            .cta-button {
+                font-size: 18px;
+                padding: 12px 30px;
+            }
+            
+            .end-message {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .timer-title {
+                font-size: 18px;
+            }
+            
+            .time-number {
+                font-size: 24px;
+            }
+            
+            .time-label {
+                font-size: 12px;
+            }
+            
+            .course-title {
+                font-size: 20px;
+            }
+            
+            .course-description {
+                font-size: 14px;
+            }
+            
+            .end-message {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer-section">
+            <div class="timer-title">🔥 期間限定特別価格 🔥</div>
+            <div id="countdown-display" class="countdown">
+                <div class="timer-units">
+                    <div class="time-unit">
+                        <span id="days" class="time-number">00</span>
+                        <span class="time-label">日</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours" class="time-number">00</span>
+                        <span class="time-label">時間</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes" class="time-number">00</span>
+                        <span class="time-label">分</span>
+                    </div>
+                    <div class="time-unit">
+                        <span id="seconds" class="time-number">00</span>
+                        <span class="time-label">秒</span>
+                    </div>
+                </div>
+            </div>
+            <div id="end-message" class="end-message">販売は終了しました</div>
+        </div>
+        
+        <div class="course-content">
+            <h1 class="course-title">プロフェッショナル向け完全マスターコース</h1>
+            <p class="course-description">
+                実践的なスキルを身につけて、キャリアアップを実現しましょう。<br>
+                この機会を逃さず、今すぐ学習を始めてください！
+            </p>
+            <button class="cta-button">今すぐ購入する</button>
+        </div>
+    </div>
+
+    <script>
+        // ★★★ 終了日時をここで設定 ★★★
+        const endDate = new Date('2025-12-31T23:59:59+09:00'); // JST (UTC+9)
+        
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = endDate.getTime() - now.getTime();
+            
+            if (timeRemaining <= 0) {
+                // 時間切れの場合
+                document.getElementById('countdown-display').style.display = 'none';
+                document.getElementById('end-message').style.display = 'block';
+                return;
+            }
+            
+            // 残り時間を計算
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            
+            // 表示を更新
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        // 初回実行
+        updateCountdown();
+        
+        // 1秒ごとに更新
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
